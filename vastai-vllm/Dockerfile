@@ -1,5 +1,7 @@
 FROM vastai/vllm:v0.23.0-cuda-13.0
 
+LABEL org.opencontainers.image.source=https://github.com/victormf2/vastai-images
+
 RUN touch /root/.no_auto_tmux
 RUN sed -i 's/autostart=true/autostart=false/' /etc/supervisor/conf.d/vllm.conf
 
