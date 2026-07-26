@@ -1,0 +1,3 @@
+[profile llm]
+role_arn = arn:aws:iam::851725193748:role/LLMRole
+credential_source = Environment

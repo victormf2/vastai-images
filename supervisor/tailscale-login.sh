@@ -2,9 +2,10 @@
 
 set -e
 
-echo "Waiting for tailscaled..."
+SOCK=/var/run/tailscale/tailscaled.sock
 
-until tailscale status >/dev/null 2>&1; do
+echo "Waiting for tailscaled..."
+until [ -S "$SOCK" ]; do
   sleep 1
 done
 
@@ -12,7 +13,8 @@ echo "Bringing tailscale up..."
 
 tailscale up \
   --auth-key="$TAILSCALE_AUTHKEY" \
-  --login-server=https://headscale.prigas.dev
+  --login-server=https://headscale.prigas.dev \
+  --hostname=vast
 
 echo "Tailscale ready"
 
